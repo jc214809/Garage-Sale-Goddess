@@ -19,7 +19,7 @@ angular.module('sample.home', [])
       $scope.item = {
         itemId: id
       }
-      $http.post("/markItemAsFound", $scope.item).success(functi$scope.url + on(data, status) {
+      $http.post("/markItemAsFound", $scope.item).success(function(data, status) {
         $scope.todos[index].itemStatus = "Found";
       })
 
