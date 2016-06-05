@@ -1,21 +1,21 @@
 <h3>Add A Item</h3>
 <p>Here you an add items for the Garage Sale Goddess to look for!!</p>
-<form id="add-item" class="form-horizontal">
+<form id="add-item" class="form-horizontal" ng-submit="submitForm()">
   <fieldset class="form-group">
     <label for="itemTitle">Item:</label>
-    <input type="text" class="form-control" id="itemTitle">
+    <input type="text" class="form-control" ng-model="item.itemTitle" id="itemTitle">
   </fieldset>
   <fieldset class="form-group">
     <label for="itemRequester">Requester:</label>
-    <input type="text" class="form-control" id="itemRequester">
+    <input type="text" class="form-control" ng-model="item.itemRequester" id="itemRequester">
   </fieldset>
   <fieldset class="form-group">
     <label for="itemPriceRange">Price:</label>
-    <input type="text" class="form-control" id="itemPriceRange">
+    <input type="text" class="form-control" ng-model="item.itemPriceRange" id="itemPriceRange">
   </fieldset>
   <fieldset class="form-group">
     <label for="itemDescription">Description:</label>
-    <textarea id="itemDescription" maxlength="250"></textarea>
+    <textarea id="itemDescription" ng-model="item.itemDescription" maxlength="250"></textarea>
   </fieldset>
   <button type="submit" class="btn btn-primary pull-right" ng-click="addItem()"> <i class="glyphicon glyphicon-plus"></i> Add </button>
 </form>
