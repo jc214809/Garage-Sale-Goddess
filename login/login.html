@@ -1,7 +1,23 @@
-<div class="login-page clearfix">
-  <div class="login-box auth0-box">
-    <img src="https://i.cloudup.com/StzWWrY34s.png" />
-    <h3>Auth0 Example</h3>
-    <p>Zero friction identity infrastructure, built for developers</p>
-  </div>
-</div>
+<h3>Add A Item</h3>
+<p>Here you an add items for the Garage Sale Goddess to look for!!</p>
+<form class="form-horizontal">
+  <fieldset class="form-group">
+    <label for="itemTitle">Item:</label>
+    <input type="text" class="form-control" id="itemTitle">
+  </fieldset>
+  <fieldset class="form-group">
+    <label for="itemRequester">Requester:</label>
+    <input type="text" class="form-control" id="itemRequester">
+  </fieldset>
+  <fieldset class="form-group">
+    <label for="itemPriceRange">Price:</label>
+    <input type="text" class="form-control" id="itemPriceRange">
+  </fieldset>
+  <fieldset class="form-group">
+    <label for="itemDescription">Description:</label>
+    <textarea id="itemDescription" maxlength="250"></textarea>
+  </fieldset>
+  <center>
+    <button type="submit" class="btn" ng-click="addItem()"> <i class="icon-plus"></i> Add </button>
+  </center>
+</form>
