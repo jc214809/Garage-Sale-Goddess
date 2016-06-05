@@ -1,10 +1,10 @@
 angular.module('sample.home', [])
   .controller('HomeCtrl', function HomeController($scope, $http, $location) {
     $scope.todos = [];
-    $http.get("http://localhost:8080/Garage-Sale-Goddess-API/getAllItems")
+    $http.get($scope.url + "/getAllItems")
       .success(function(data, status, headers, config) {
         $scope.todos = data;
-        console.log($scope.todos);
+        console.log($scop$scope.url + e.todos);
       }).error(function(data, status, headers, config) {
         alert("error");
       })
@@ -19,7 +19,7 @@ angular.module('sample.home', [])
       $scope.item = {
         itemId: id
       }
-      $http.post($scope.url + "/markItemAsFound", $scope.item).success(functi$scope.url + on(data, status) {
+      $http.post("/markItemAsFound", $scope.item).success(functi$scope.url + on(data, status) {
         $scope.todos[index].itemStatus = "Found";
       })
 
@@ -28,7 +28,7 @@ angular.module('sample.home', [])
       $scope.item = {
         itemId: id
       }
-      $http.post($scope.url + "http://localhost:8080/Garage-Sale-Goddess-API/deleteItem", $scope.item).success(function(data, status) {
+      $http.post($scope.url + "/deleteItem", $scope.item).success(function(data, status) {
         $scope.todos.remove(index);
       })
     }
