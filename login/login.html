@@ -3,7 +3,10 @@
   <p>{{instructions}}</p>
 </center>
 <form id="add-item" class="form-horizontal" ng-submit="submitForm()">
-  <input type="text" class="form-control hidden" ng-model="item.itemId" id="itemId">
+  <fieldset class="form-group hidden">
+    <label for="itemId">Item Id:</label>
+    <input type="text" class="form-control" ng-model="item.itemId" id="itemId">
+  </fieldset>
   <fieldset class="form-group">
     <label for="itemTitle">Item:</label>
     <input type="text" class="form-control" ng-model="item.itemTitle" id="itemTitle">

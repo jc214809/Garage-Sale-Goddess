@@ -35,7 +35,7 @@ angular.module('sample.home', [])
         itemId: id
       }
       $http.post($scope.url + "/markItemAsFound", $scope.item).success(function(data, status) {
-        $scope.todos[index].itemStatus = "Found";
+        $scope.todos[index].itemStatus = "FOUND";
       })
 
     };
@@ -49,7 +49,7 @@ angular.module('sample.home', [])
     }
     $scope.addTodo = function() {
       $scope.itemservice = itemservice;
-      $scope.itemservice.item = [];
+      $scope.itemservice.item = {};
       $location.path('/login');
     };
   });
