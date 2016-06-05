@@ -19,7 +19,7 @@ angular.module('sample.home', [])
       $scope.item = {
         itemId: id
       }
-      $http.post("http://localhost:8080/Garage-Sale-Goddess-API/markItemAsFound", $scope.item).success(function(data, status) {
+      $http.post($scope.url + "/markItemAsFound", $scope.item).success(functi$scope.url + on(data, status) {
         $scope.todos[index].itemStatus = "Found";
       })
 
@@ -28,7 +28,7 @@ angular.module('sample.home', [])
       $scope.item = {
         itemId: id
       }
-      $http.post("http://localhost:8080/Garage-Sale-Goddess-API/deleteItem", $scope.item).success(function(data, status) {
+      $http.post($scope.url + "http://localhost:8080/Garage-Sale-Goddess-API/deleteItem", $scope.item).success(function(data, status) {
         $scope.todos.remove(index);
       })
     }

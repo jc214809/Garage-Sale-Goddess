@@ -7,7 +7,7 @@ angular.module('sample')
       // Posting data to php file
       $http({
           method: 'POST',
-          url: "http://localhost:8080/Garage-Sale-Goddess-API/addItem",
+          url: $scope.url + "/addItem",
           data: $scope.item //forms user object
         })
         .success(function(data) {
