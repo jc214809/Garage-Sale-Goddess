@@ -1,6 +1,7 @@
 <h3>Add A Item</h3>
 <p>Here you an add items for the Garage Sale Goddess to look for!!</p>
 <form id="add-item" class="form-horizontal" ng-submit="submitForm()">
+  <input type="text" class="form-control" ng-model="item.itemId" id="itemId">
   <fieldset class="form-group">
     <label for="itemTitle">Item:</label>
     <input type="text" class="form-control" ng-model="item.itemTitle" id="itemTitle">
@@ -17,5 +18,8 @@
     <label for="itemDescription">Description:</label>
     <textarea id="itemDescription" ng-model="item.itemDescription" maxlength="250"></textarea>
   </fieldset>
-  <button type="submit" class="btn btn-primary pull-right" ng-click="addItem()"> <i class="glyphicon glyphicon-plus"></i> Add </button>
+  <button type="submit" class="btn btn-danger pull-right" ng-click="cancel()"><i class="glyphicon glyphicon-plus"></i> Cancel</button>
+  <!-- <button type="submit" ng-if="item.itemId == null" class="btn btn-primary pull-right" ng-click="addItem()"><i class="glyphicon glyphicon-plus"></i> Add</button>
+ -->
+  <button type="submit" class="btn btn-info pull-right" ng-click="updateItem(item.itemId)"><i class="glyphicon glyphicon-pencil"></i> Update</button>
 </form>

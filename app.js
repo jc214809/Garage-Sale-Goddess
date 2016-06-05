@@ -21,6 +21,9 @@ angular.module('sample', [
         pageTitle: 'Login'
       });
   })
+  .service('itemservice', function() {
+    this.item = [];
+  })
   .controller('AppCtrl', function AppCtrl($scope, $location) {
     // $scope.url = "http://localhost:8080/Garage-Sale-Goddess-API";
     $scope.url = "http://75.118.135.179:7080/Garage-Sale-Goddess-API";

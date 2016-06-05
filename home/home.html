@@ -1,9 +1,9 @@
 <div>
   <h3>Garage Sale Goddess</h3>
   <div ng-repeat="todo in todos" class="item-row">
-    <i id="detailsToggle" class="glyphicon glyphicon-triangle-bottom details" ng-click="toggle(todo.itemId)"></i>
+    <i id="detailsToggle-{{todo.itemId}}" class="glyphicon glyphicon-triangle-bottom details" ng-click="toggle(todo.itemId)"></i>
     <span class="item completed-{{todo.itemStatus}}">{{todo.itemTitle}}</span>
-    <div id="details-{{todo.itemId}}" class="" style="display:none;">
+    <div id="details-{{todo.itemId}}" style="display:none;">
       <h4>Details</h4>
       <div><b>Requester:</b> {{todo.itemRequester}}</div>
       <div><b>Price:</b> {{todo.itemPriceRange}}</div>
@@ -11,7 +11,7 @@
       <div>{{todo.itemDescription}}</div>
       <div ng-if="todo.itemStatus != 'Found'">
         <button class="btn btn-success" ng-click="markAsFound(todo.itemId, $index)"><i class="glyphicon glyphicon-thumbs-up"></i> Found</button>
-        <button class="btn btn-info" ng-click="removeTask(todo.itemId)"><i class="glyphicon glyphicon-pencil"></i> Edit</button>
+        <button class="btn btn-info" ng-click="edit(todo)"><i class="glyphicon glyphicon-pencil"></i> Edit</button>
         <button class="btn btn-danger" ng-click="removeTask(todo.itemId, $index)"><i class="glyphicon glyphicon-trash"></i> Delete</button>
       </div>
     </div>
@@ -19,6 +19,6 @@
 </div>
 <h3>Total todos: {{ getTotalTodos() }}</h3>
 <center>
-  <button class="btn btn-primary" ng-click="addTodo()"><i class="icon-plus"></i>Add A New Item To Look For</button>
+  <button class="btn btn-primary" ng-click="addTodo()"><i class="glyphicon glyphicon-plus"></i> Add A New Item To Look For</button>
 </center>
 </div>
