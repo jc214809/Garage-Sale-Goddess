@@ -14,6 +14,16 @@ angular.module('sample.home', [])
     $scope.getTotalTodos = function() {
       return $scope.todos.length;
     };
+    $scope.markAsFound = function(id, index) {
+      console.log(index);
+      $scope.item = {
+        itemId: id
+      }
+      $http.post("http://localhost:8080/Garage-Sale-Goddess-API/markItemAsFound", $scope.item).success(function(data, status) {
+        $scope.todos[index].itemStatus = "Found";
+      })
+
+    };
     $scope.removeTask = function(id, index) {
       $scope.item = {
         itemId: id

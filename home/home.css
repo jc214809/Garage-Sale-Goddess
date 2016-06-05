@@ -1,33 +1,33 @@
-  .completed-true {
-  text-decoration: line-through;
-  opacity: .3;
-}
-
-i.icon-trash {
-  cursor: pointer;
-}
-
-.item {
-  font-size: 30px;
-  color: #990000;
-}
-
-.details {
-  font-size: 20px;
-  position: relative;
-  bottom: -20px;
-}
-
-.item-info {
-  background-color: #e2e6e9;
-}
-
-.hidden {
-  display: none;
-}
-
-.item-row {
-  padding-bottom: 5px;
-  b {
-    color: blue;
-  }
+      .completed-Found {
+      text-decoration: line-through;
+      opacity: .3;
+    }
+    
+    i.icon-trash {
+      cursor: pointer;
+    }
+    
+    .item {
+      font-size: 30px;
+      color: #990000;
+    }
+    
+    .details {
+      font-size: 20px;
+      position: relative;
+      bottom: -20px;
+    }
+    
+    .item-info {
+      background-color: #e2e6e9;
+    }
+    
+    .hidden {
+      display: none;
+    }
+    
+    .item-row {
+      padding-bottom: 5px;
+      b {
+        color: blue;
+      }
