@@ -1,7 +1,7 @@
 angular.module('sample.home', [])
   .controller('HomeCtrl', function HomeController($scope, $http, $location, itemservice) {
     $scope.todos = [];
-    $http.get($scope.url + "/getAllItems")
+    $http.get($scope.url + "/getNotFoundItems")
       .success(function(data, status, headers, config) {
         $scope.todos = data;
       }).error(function(data, status, headers, config) {
@@ -13,22 +13,14 @@ angular.module('sample.home', [])
       $location.path('/login');
     };
 
-    $scope.toggle = function(id) {
-      $("#details-" + id).toggle("slow", $scope.toggleArrows(id));
+    $scope.pastFinds = function() {
+      $location.path('/past');
     };
 
-    $scope.toggleArrows = function(id) {
-      if ($("#details-" + id).is(':hidden')) {
-        $("#detailsToggle-" + id).removeClass('glyphicon-triangle-bottom');
-        $("#detailsToggle-" + id).addClass('glyphicon-triangle-top');
-      } else {
-        $("#detailsToggle-" + id).removeClass('glyphicon-triangle-top');
-        $("#detailsToggle-" + id).addClass('glyphicon-triangle-bottom');
-      }
-    };
     $scope.getTotalTodos = function() {
       return $scope.todos.length;
     };
+
     $scope.markAsFound = function(id, index) {
       console.log(index);
       $scope.item = {

@@ -19,9 +19,6 @@ angular.module('sample')
       $('#submit').addClass('btn-info');
       $scope.path = "/editItem";
     }
-    $scope.cancel = function() {
-      $location.path('/');
-    };
     // calling our submit function.
     $scope.submitForm = function(id) {
       console.log($scope.item);
