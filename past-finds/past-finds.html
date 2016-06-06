@@ -1,0 +1,21 @@
+<div>
+  <center>
+    <h3 class="title">Garage Sale Goddess</h3>
+  </center>
+  <div ng-repeat="todo in todos" class="item-row">
+    <i id="detailsToggle-{{todo.itemId}}" class="glyphicon glyphicon-triangle-bottom details" ng-click="toggle(todo.itemId)"></i>
+    <span class="item">{{todo.itemTitle}}</span>
+    <div id="details-{{todo.itemId}}" style="display:none;">
+      <h4>Details</h4>
+      <div><b>Requester:</b> {{todo.itemRequester}}</div>
+      <div><b>Price:</b> {{todo.itemPriceRange}}</div>
+      <div><b>Description:</b> </div>
+      <div>{{todo.itemDescription}}</div>
+      <div>
+        <button class="btn btn-danger add-item" ng-click="addBackToNotFound(todo.itemId, $index)">Mark As Not Found</button>
+      </div>
+    </div>
+  </div>
+</div>
+<h3>Total todos: {{ getTotalTodos() }}</h3>
+<button class="btn btn-primary add-item" ng-click="cancel()">Back</button>

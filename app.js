@@ -6,7 +6,8 @@ Array.prototype.remove = function(from, to) {
 
 angular.module('sample', [
     'ngRoute',
-    'sample.home'
+    'sample.home',
+    'sample.pastFinds'
   ])
   .config(function myAppConfig($routeProvider, $httpProvider, $locationProvider) {
     $routeProvider
@@ -19,14 +20,38 @@ angular.module('sample', [
         controller: 'LoginCtrl',
         templateUrl: 'login/login.html',
         pageTitle: 'Login'
+      })
+      .when('/past', {
+        controller: 'PastFindsCtrl',
+        templateUrl: 'past-finds/past-finds.html',
+        pageTitle: 'Past Finds'
       });
   })
   .service('itemservice', function() {
-    this.item = [];
+    this.item = {};
   })
   .controller('AppCtrl', function AppCtrl($scope, $location) {
-    // $scope.url = "http://localhost:8080/Garage-Sale-Goddess-API";
+    //$scope.url = "http://localhost:8080/Garage-Sale-Goddess-API";
     $scope.url = "http://75.118.135.179:7080/Garage-Sale-Goddess-API";
+
+    $scope.toggle = function(id) {
+      $("#details-" + id).toggle("slow", $scope.toggleArrows(id));
+    };
+
+    $scope.toggleArrows = function(id) {
+      if ($("#details-" + id).is(':hidden')) {
+        $("#detailsToggle-" + id).removeClass('glyphicon-triangle-bottom');
+        $("#detailsToggle-" + id).addClass('glyphicon-triangle-top');
+      } else {
+        $("#detailsToggle-" + id).removeClass('glyphicon-triangle-top');
+        $("#detailsToggle-" + id).addClass('glyphicon-triangle-bottom');
+      }
+    };
+
+    $scope.cancel = function() {
+      $location.path('/');
+    };
+
     $scope.$on('$routeChangeSuccess', function(e, nextRoute) {
       if (nextRoute.$$route && angular.isDefined(nextRoute.$$route.pageTitle)) {
         $scope.pageTitle = nextRoute.$$route.pageTitle + ' | Auth0 Sample';
