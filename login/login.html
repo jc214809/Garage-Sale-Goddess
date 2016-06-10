@@ -9,19 +9,19 @@
   </fieldset>
   <fieldset class="form-group">
     <label for="itemTitle">Item:</label>
-    <input type="text" class="form-control" ng-model="item.itemTitle" id="itemTitle">
+    <input type="text" class="form-control" ng-model="item.itemTitle" id="itemTitle" required>
   </fieldset>
   <fieldset class="form-group">
     <label for="itemRequester">Requester:</label>
-    <input type="text" class="form-control" ng-model="item.itemRequester" id="itemRequester">
+    <input type="text" class="form-control" ng-model="item.itemRequester" id="itemRequester" required>
   </fieldset>
   <fieldset class="form-group">
     <label for="itemPriceRange">Price:</label>
-    <input type="text" class="form-control" ng-model="item.itemPriceRange" id="itemPriceRange">
+    <input type="text" class="form-control" ng-model="item.itemPriceRange" id="itemPriceRange" required>
   </fieldset>
   <fieldset class="form-group">
     <label for="itemDescription">Description:</label>
-    <textarea id="itemDescription" class="text-area" ng-model="item.itemDescription" maxlength="250"></textarea>
+    <textarea id="itemDescription" class="text-area" ng-model="item.itemDescription" maxlength="250" required></textarea>
   </fieldset>
   <button class="btn btn-danger pull-right" ng-click="cancel()"><i class="glyphicon glyphicon-remove"></i> Cancel</button>
   <!-- <button type="submit" ng-if="item.itemId == null" class="btn btn-primary pull-right" ng-click="addItem()"><i class="glyphicon glyphicon-plus"></i> Add</button>

@@ -31,3 +31,11 @@
   width: 100%;
   height: 90px;
 }
+
+input:focus:required:invalid textarea:invalid:focus:required:invalid {
+  border: 1px solid red;
+}
+
+input:valid textarea:valid {
+  border: 1px solid green;
+}
