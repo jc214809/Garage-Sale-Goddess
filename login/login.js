@@ -1,36 +1,36 @@
-angular.module('sample')
-  .controller('LoginCtrl', function($scope, $http, $location, itemservice) {
-    // create a blank object to handle form data.
-    $scope.item = itemservice.item;
-    if ($scope.item.itemId == null) {
-      $scope.buttonText = "Add"
-      $scope.header = "Add Item";
-      $scope.successMessage = "The item was successfully added to the list";
-      $scope.instructions = "Here you an add items for the Garage Sale Goddess to look for by filling out the form below!!";
-      $('#icon').addClass('glyphicon-plus');
-      $('#submit').addClass('btn-primary');
-      $scope.path = "/addItem";
-    } else {
-      $scope.header = "Update Item";
-      $scope.successMessage = "The item was successfully updated";
-      $scope.instructions = "Here you can edit the item if you were not specific enough the first time or you just happen to accidently mess up.";
-      $scope.buttonText = "Update"
-      $('#icon').addClass('glyphicon-pencil');
-      $('#submit').addClass('btn-info');
-      $scope.path = "/editItem";
+angular.module('sample.login', [
+    'auth0'
+  ])
+  .controller('LoginCtrl', function($scope, auth, $http, $location, itemservice, store) {
+
+    $scope.login = function() {
+      auth.signin({}, function(profile, token) {
+          console.log("Profile: " + JSON.stringify(profile))
+          store.set('profile', profile);
+          store.set('token', token);
+
+          $scope.userDetails = {
+            email: profile.email,
+            given_name: profile.given_name,
+            family_name: profile.family_name,
+            gender: profile.gender,
+            id: profile.identities[0].user_id
+          };
+          // $http.post($scope.url + "/register", JSON.stringify($scope.userDetails))
+          //   .then(
+          //     function successCallback(response) {
+          //       console.log("Success");
+          //     },
+          //     function errorCallback(response) {
+          //       alert("Error " + JSON.stringify(response));
+          //     });
+
+          $location.path("/");
+
+        },
+        function(error) {
+          console.log("There was an error logging in", error);
+        });
     }
-    // calling our submit function.
-    $scope.submitForm = function(id) {
-      console.log($scope.item);
-      // Posting data to php file
-      $http({
-        method: 'POST',
-        url: $scope.url + $scope.path,
-        data: $scope.item //forms user object
-      }).success(function(data) {
-        alert($scope.successMessage);
-        $location.path('/');
-      });
-    };
 
   });

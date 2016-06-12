@@ -10,7 +10,7 @@ angular.module('sample.home', [])
     $scope.edit = function(item) {
       $scope.itemservice = itemservice;
       $scope.itemservice.item = item;
-      $location.path('/login');
+      $location.path('/item');
     };
 
     $scope.pastFinds = function() {
@@ -42,6 +42,6 @@ angular.module('sample.home', [])
     $scope.addTodo = function() {
       $scope.itemservice = itemservice;
       $scope.itemservice.item = {};
-      $location.path('/login');
+      $location.path('/item');
     };
   });

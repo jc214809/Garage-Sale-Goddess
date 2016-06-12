@@ -2,6 +2,7 @@
   <center>
     <h3 class="title">Garage Sale Goddess</h3>
   </center>
+  <input type="button" id="logoutSidebar" ng-click="logout()" value="Logout">
   <div ng-repeat="todo in todos" class="item-row">
     <i id="detailsToggle-{{todo.itemId}}" class="glyphicon glyphicon-triangle-bottom details" ng-click="toggle(todo.itemId)"></i>
     <span class="item completed-{{todo.itemStatus}}">{{todo.itemTitle}}</span>
