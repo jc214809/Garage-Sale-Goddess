@@ -47,7 +47,16 @@ i.icon-trash {
 
 .title {
   font-family: 'Pacifico', cursive;
-  color: purple;
+  color: purple !important;
+}
+
+.labels {
+  color: blue;
+  font-weight: 600;
+}
+
+.image-pad {
+  padding-bottom: 8px;
 }
 
 hr {
