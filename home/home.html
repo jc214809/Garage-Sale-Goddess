@@ -14,7 +14,7 @@
  -->
         <div><b class="labels">Price:</b> {{todo.itemPriceRange}}</div>
         <div><b class="labels">Description:</b> </div>
-        <div>{{todo.itemDescription}}</div>
+        <div style="width:250px; word-wrap:break-word;"> {{todo.itemDescription}}</div>
         <div ng-if="todo.itemStatus != 'FOUND'">
           <button class="btn btn-success details-button" ng-click="markAsFound(todo.itemId, $index)"><i class="glyphicon glyphicon-thumbs-up"></i> Found</button>
           <button class="btn btn-info details-button" ng-click="edit(todo)"><i class="glyphicon glyphicon-pencil"></i> Edit</button>

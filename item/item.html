@@ -10,10 +10,12 @@
     </fieldset>
     <fieldset class="form-group">
       <label for="itemRequester">Requester:</label>
-      <img alt="Profile Pitctue" width='13%' src="{{item.itemRequesterImageURL}}"> <b style="font-size:18px;">{{item.itemRequesterName}}</b>
-      <input type="hidden" class="form-control" ng-model="item.itemRequesterName" id="itemRequesterName">
-      <input type="hidden" class="form-control" ng-model="item.itemRequesterImageURL" id="itemRequesterImageURL">
-      <input type="hidden" class="form-control" ng-model="item.itemRequesterID" id="itemRequesterID">
+      <div>
+        <img alt="Profile Pitctue" width='13%' src="{{item.itemRequesterImageURL}}"> <b style="font-size:18px;">{{item.itemRequesterName}}</b>
+        <input type="hidden" class="form-control" ng-model="item.itemRequesterName" id="itemRequesterName">
+        <input type="hidden" class="form-control" ng-model="item.itemRequesterImageURL" id="itemRequesterImageURL">
+        <input type="hidden" class="form-control" ng-model="item.itemRequesterID" id="itemRequesterID">
+      </div>
     </fieldset>
     <fieldset class="form-group">
       <label for="itemTitle">Item:</label>
