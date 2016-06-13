@@ -10,6 +10,12 @@ $(document).on('click', '.navbar-brand', function(e) {
   }
 });
 
+// $(document).on('click', , function(e) {
+// $('.navbar-collapse.in a, .navbar-brand, .details-button, .add-item').on('click', function(e) {
+//   // if ($(e.target).is('a')) {
+//   $(this).collapse('hide');
+// });
+
 Array.prototype.remove = function(from, to) {
   var rest = this.slice((to || from) + 1 || this.length);
   this.length = from < 0 ? this.length + from : from;
