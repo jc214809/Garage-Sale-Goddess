@@ -4,8 +4,8 @@
       <img class="img-circle" alt="Profile Pitctue" width='15%' src="{{user.itemRequesterImageURL}}">
       <h3 style="display:inline;">{{user.itemRequesterName}}</h3>
     </div>
-    <div ng-repeat="todo in todos" ng-if="todo.itemRequesterID == user.itemRequesterID" class="item-row">
-      <i id="detailsToggle-{{todo.itemId}}" class="glyphicon glyphicon-triangle-bottom details" ng-click="toggle(todo.itemId)"></i>
+    <div ng-repeat="todo in todos" ng-if="todo.itemRequesterID == user.itemRequesterID" class="item-row" ng-click="toggle(todo.itemId)">
+      <i id="detailsToggle-{{todo.itemId}}" class="glyphicon glyphicon-triangle-bottom details"></i>
       <span class="item completed-{{todo.itemStatus}}">{{todo.itemTitle}}</span>
       <div id="details-{{todo.itemId}}" style="display:none;">
         <h4>Details</h4>
