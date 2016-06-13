@@ -9,13 +9,15 @@ angular.module('sample.login', [
           store.set('profile', profile);
           store.set('token', token);
 
-          $scope.userDetails = {
-            email: profile.email,
-            given_name: profile.given_name,
-            family_name: profile.family_name,
-            gender: profile.gender,
-            id: profile.identities[0].user_id
-          };
+          $scope.profile = profile;
+          // $scope.userDetails = {
+          //   email: profile.email,
+          //   given_name: profile.given_name,
+          //   family_name: profile.family_name,
+          //   gender: profile.gender,
+          //   id: profile.identities[0].user_id
+          // };
+
           // $http.post($scope.url + "/register", JSON.stringify($scope.userDetails))
           //   .then(
           //     function successCallback(response) {

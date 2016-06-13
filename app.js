@@ -10,6 +10,12 @@ $(document).on('click', '.navbar-brand', function(e) {
   }
 });
 
+Array.prototype.remove = function(from, to) {
+  var rest = this.slice((to || from) + 1 || this.length);
+  this.length = from < 0 ? this.length + from : from;
+  return this.push.apply(this, rest);
+};
+
 angular.module('sample', [
     'ngRoute',
     'sample.home',
@@ -80,8 +86,9 @@ angular.module('sample', [
   }).controller('AppCtrl', function AppCtrl($scope, $location, auth, store) {
 
     $scope.auth = auth;
-    //$scope.url = "http://localhost:8080/Garage-Sale-Goddess-API";
-    $scope.url = "http://75.118.135.179:7080/Garage-Sale-Goddess-API";
+    $scope.profile = store.get('profile');
+    $scope.url = "http://localhost:8080/Garage-Sale-Goddess-API";
+    //$scope.url = "http://75.118.135.179:7080/Garage-Sale-Goddess-API";
 
     $scope.toggle = function(id) {
       $("#details-" + id).toggle("slow", $scope.toggleArrows(id));

@@ -50,6 +50,15 @@ i.icon-trash {
   color: purple !important;
 }
 
+.labels {
+  color: blue;
+  font-weight: 600;
+}
+
+.image-pad {
+  padding-bottom: 8px;
+}
+
 hr {
   color: red;
 }
