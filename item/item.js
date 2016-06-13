@@ -1,7 +1,5 @@
 angular.module('sample.item', [])
   .controller('ItemCtrl', function($scope, $http, $location, itemservice, store) {
-
-
     // create a blank object to handle form data.
     $scope.item = itemservice.item;
     if ($scope.item.itemId == null) {

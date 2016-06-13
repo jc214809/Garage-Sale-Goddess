@@ -1,28 +1,24 @@
 <div class="container">
-  <div>
-    <!-- {{auth}} -->
-    <!-- <h3>Current List</h3> -->
-    <div ng-repeat="user in users">
-      <div class="image-pad">
-        <img class="img-circle" alt="Profile Pitctue" width='15%' src="{{user.itemRequesterImageURL}}">
-        <h3 style="display:inline;">{{user.itemRequesterName}}</h3>
-      </div>
-      <div ng-repeat="todo in todos" ng-if="todo.itemRequesterID == user.itemRequesterID" class="item-row">
-        <i id="detailsToggle-{{todo.itemId}}" class="glyphicon glyphicon-triangle-bottom details" ng-click="toggle(todo.itemId)"></i>
-        <span class="item completed-{{todo.itemStatus}}">{{todo.itemTitle}}</span>
-        <div id="details-{{todo.itemId}}" style="display:none;">
-          <h4>Details</h4>
-          <!-- <div><b class="labels">Requester:</b></div>
+  <div ng-repeat="user in users">
+    <div class="image-pad">
+      <img class="img-circle" alt="Profile Pitctue" width='15%' src="{{user.itemRequesterImageURL}}">
+      <h3 style="display:inline;">{{user.itemRequesterName}}</h3>
+    </div>
+    <div ng-repeat="todo in todos" ng-if="todo.itemRequesterID == user.itemRequesterID" class="item-row">
+      <i id="detailsToggle-{{todo.itemId}}" class="glyphicon glyphicon-triangle-bottom details" ng-click="toggle(todo.itemId)"></i>
+      <span class="item completed-{{todo.itemStatus}}">{{todo.itemTitle}}</span>
+      <div id="details-{{todo.itemId}}" style="display:none;">
+        <h4>Details</h4>
+        <!-- <div><b class="labels">Requester:</b></div>
 <div><img alt="Profile Pitctue" width='10%' src="{{todo.itemRequesterImageURL}}"><b style="font-size:18px;">{{todo.itemRequesterName}}</b></div>
  -->
-          <div><b class="labels">Price:</b> {{todo.itemPriceRange}}</div>
-          <div><b class="labels">Description:</b> </div>
-          <div>{{todo.itemDescription}}</div>
-          <div ng-if="todo.itemStatus != 'FOUND'">
-            <button class="btn btn-success details-button" ng-click="markAsFound(todo.itemId, $index)"><i class="glyphicon glyphicon-thumbs-up"></i> Found</button>
-            <button class="btn btn-info details-button" ng-click="edit(todo)"><i class="glyphicon glyphicon-pencil"></i> Edit</button>
-            <button class="btn btn-danger details-button" ng-click="removeTask(todo.itemId, $index)"><i class="glyphicon glyphicon-trash"></i> Delete</button>
-          </div>
+        <div><b class="labels">Price:</b> {{todo.itemPriceRange}}</div>
+        <div><b class="labels">Description:</b> </div>
+        <div>{{todo.itemDescription}}</div>
+        <div ng-if="todo.itemStatus != 'FOUND'">
+          <button class="btn btn-success details-button" ng-click="markAsFound(todo.itemId, $index)"><i class="glyphicon glyphicon-thumbs-up"></i> Found</button>
+          <button class="btn btn-info details-button" ng-click="edit(todo)"><i class="glyphicon glyphicon-pencil"></i> Edit</button>
+          <button class="btn btn-danger details-button" ng-click="removeTask(todo.itemId, $index)"><i class="glyphicon glyphicon-trash"></i> Delete</button>
         </div>
       </div>
     </div>
