@@ -14,8 +14,8 @@
   <link rel="stylesheet" type="text/css" href="item/item.css">
   <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
   <script type="text/javascript" src="auth0-variables.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.2/jquery.js"></script>
-  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.2/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="https://cdn.auth0.com/js/lock-7.12.min.js"></script>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.0/angular.js"></script>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.0/angular-cookies.js"></script>
@@ -55,7 +55,7 @@
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
-        <i class="glyphicon glyphicon-menu-hamburger" style="font-size:'200%'"></i>
+        <i class="glyphicon glyphicon-menu-hamburger" style="font-size:'50px';"></i>
       </button>
       <center><a class="navbar-brand title" href="#/">Garage Sale Goddess</a></center>
     </div>
@@ -64,9 +64,9 @@
       <ul class="nav navbar-nav">
         <li><a href="#/item"><i class="glyphicon glyphicon-plus"></i> Add Item</a></li>
         <li><a href="#/past"><i class="glyphicon glyphicon-book"></i> Past Finds</a></li>
+        <li><a href="#/login" ng-click="logout()"><i class="glyphicon glyphicon-log-out"></i> Logout</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#/login" ng-click="logout()"><i class="glyphicon glyphicon-log-out"></i> Logout</a></li>
       </ul>
     </div>
     <!-- /.navbar-collapse -->
