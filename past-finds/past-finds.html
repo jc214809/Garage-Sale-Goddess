@@ -5,7 +5,9 @@
     <div id="details-{{todo.itemId}}" style="display:none;">
       <h4>Details</h4>
       <div><b class="labels">Requester:</b></div>
+      <div><img class="img-circle" alt="Profile Picture" width='10%' src="http://graph.facebook.com/{{todo.itemRequesterID}}/picture?type=normal"><b style="font-size:18px;">{{todo.itemRequesterName}}</b></div>
       <div><b class="labels">Found by:</b></div>
+      <div><img class="img-circle" alt="Profile Picture" width='10%' src="http://graph.facebook.com/{{todo.itemFinderID}}/picture?type=normal"><b style="font-size:18px;">{{todo.itemFindersName}}</b></div>
       <div><b class="labels">Price:</b> {{todo.itemPriceRange}}</div>
       <div><b class="labels">Description:</b> </div>
       <div>{{todo.itemDescription}}</div>
