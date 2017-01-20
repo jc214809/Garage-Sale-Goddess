@@ -38,9 +38,13 @@ angular.module('sample', [
     'sample.login',
     'angular-storage',
     'angular-jwt'
-  ])
-  .config(function myAppConfig($routeProvider, authProvider, $httpProvider, $locationProvider,
-    jwtInterceptorProvider) {
+  ])  .config(function myAppConfig($routeProvider, authProvider, $httpProvider, $locationProvider,
+    jwtInterceptorProvider, jwtOptionsProvider) {
+    jwtOptionsProvider.config({
+      whiteListedDomains: ['localhost', 'jc214809.github.io']
+    });
+  // .config(function myAppConfig($routeProvider, authProvider, $httpProvider, $locationProvider,
+  //   jwtInterceptorProvider) {
     $routeProvider
       .when('/', {
         controller: 'HomeCtrl',
