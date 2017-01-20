@@ -1,4 +1,7 @@
 <div class="container">
+<!--   <center>
+    <button class="btn btn-primary add-item" ng-click="addTodo()"><i class="glyphicon glyphicon-plus"></i> Add Item</button>
+  </center> -->
   <div ng-repeat="user in users">
     <div class="image-pad">
       <img class="img-circle" alt="Profile Pitctue" width='15%' src="http://graph.facebook.com/{{user.itemRequesterID}}/picture?type=normal">
@@ -24,7 +27,4 @@
     </div>
   </div>
   <h3>Total Items: {{ getTotalTodos() }}</h3>
-  <center>
-    <button class="btn btn-primary add-item" ng-click="addTodo()"><i class="glyphicon glyphicon-plus"></i> Add Item</button>
-  </center>
 </div>
