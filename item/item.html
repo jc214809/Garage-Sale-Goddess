@@ -13,7 +13,7 @@
     <fieldset class="form-group">
       <label for="itemRequester">Requester:</label>
       <div>
-        <img class="img-circle" alt="Profile Picture" width='13%' src="{{item.itemRequesterImageURL}}"> <b style="font-size:18px;">{{item.itemRequesterName}}</b>
+        <img class="img-circle" alt="Profile Picture" width='13%' src="http://graph.facebook.com/{{item.itemRequesterID}}/picture?type=normal"> <b style="font-size:18px;">{{item.itemRequesterName}}</b>
         <input type="hidden" class="form-control" ng-model="item.itemRequesterName" id="itemRequesterName">
         <input type="hidden" class="form-control" ng-model="item.itemRequesterImageURL" id="itemRequesterImageURL">
         <input type="hidden" class="form-control" ng-model="item.itemRequesterID" id="itemRequesterID">
