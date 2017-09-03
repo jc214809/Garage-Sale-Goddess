@@ -44388,7 +44388,6 @@ angular.module('sample.search', [])
       // play with listings here...
       listings.forEach((listing) => client.details(listing)
         .then((details) => {
-          details.date = listing.date;
           $scope.listings.push(details);
           console.log(details);
           $scope.$apply();
@@ -44396,5 +44395,21 @@ angular.module('sample.search', [])
     }).catch((err) => {
       console.error(err);
     });
+    $scope.checkDate = function(dates) {
+      $scope.$apply();
+      for (var i = 0; i < dates.length; i++) {
+        var result = dates[i].split(" ");
+        var date = result[1].split("-");
+        var saleDate = new Date(date[0], date[1], date[2]);
+        var today = new Date();
+        var dateDiffDays = Math.ceil((Math.ceil(saleDate.getTime() - today.getTime())) / (1000 * 3600 * 24));
+        if (dateDiffDays >= -10 && dateDiffDays <= 10) {
+
+        } else {
+          return false;
+        }
+      }
+      return true;
+    };
   });
 },{"node-craigslist":50}]},{},[459]);

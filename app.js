@@ -108,6 +108,10 @@ angular.module('sample', [
   });
 }).service('itemservice', function() {
   this.item = {};
+}).filter('capitalize', function() {
+  return function(input) {
+    return (!!input) ? input.charAt(0).toUpperCase() + input.substr(1).toLowerCase() : '';
+  }
 }).controller('AppCtrl', function AppCtrl($scope, $location, auth, store) {
 
   $scope.auth = auth;

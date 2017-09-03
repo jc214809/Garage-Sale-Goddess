@@ -3,7 +3,7 @@
   <!-- <p>{{listings}}</p> -->
   <div>
     <div ng-repeat="listing in listings">
-      <a target="_blank" href="{{listing.mapUrl}}">{{listing.title}}</a>
+      <a target="_blank" href="{{listing.mapUrl}}">{{listing.title}}  </a><span class="badge badge-pill badge-primary" ng-repeat="date in listing.dates"> {{date | capitalize}}  </span>
       <p>{{listing.description}}</p>
       <!-- <p>
   <div id="myCarousel" class="carousel slide" data-ride="carousel" ng-if="listing.images.length > 0">
