@@ -18,6 +18,28 @@ angular.module('sample.search', [])
     }).catch((err) => {
       console.error(err);
     });
+    client.search('Yard Sale').then((listings) => {
+      // play with listings here...
+      listings.forEach((listing) => client.details(listing)
+        .then((details) => {
+          $scope.listings.push(details);
+          console.log(details);
+          $scope.$apply();
+        }))
+    }).catch((err) => {
+      console.error(err);
+    });
+    client.search('Moving Sale').then((listings) => {
+      // play with listings here...
+      listings.forEach((listing) => client.details(listing)
+        .then((details) => {
+          $scope.listings.push(details);
+          console.log(details);
+          $scope.$apply();
+        }))
+    }).catch((err) => {
+      console.error(err);
+    });
     $scope.checkDate = function(dates) {
       for (var i = 0; i < dates.length; i++) {
         var result = dates[i].split(" ");
