@@ -36,6 +36,7 @@ angular.module('sample', [
   'sample.pastFinds',
   'sample.item',
   'sample.login',
+  'sample.search',
   'angular-storage',
   'angular-jwt'
 ]).config(function myAppConfig($routeProvider, authProvider, $httpProvider, $locationProvider,
@@ -62,6 +63,12 @@ angular.module('sample', [
       controller: 'PastFindsCtrl',
       templateUrl: 'past-finds/past-finds.html',
       pageTitle: 'Past Finds',
+      requiresLogin: true
+    })
+    .when('/search', {
+      controller: 'SearchCtrl',
+      templateUrl: 'search/search.html',
+      pageTitle: 'Search',
       requiresLogin: true
     })
     .when('/login', {

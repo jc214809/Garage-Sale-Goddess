@@ -1,0 +1,24 @@
+{
+  "name": "garage-sale-goddess",
+  "version": "1.0.0",
+  "description": "http://jsfiddle.net/leonardolatorre/beJwJ/",
+  "main": "app.js",
+  "dependencies": {
+    "node-craigslist": "https://github.com/jc214809/node-craigslist/tarball/master"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jc214809/Garage-Sale-Goddess.git"
+  },
+  "keywords": [],
+  "author": "Joel Jayson Clark",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jc214809/Garage-Sale-Goddess/issues"
+  },
+  "homepage": "https://github.com/jc214809/Garage-Sale-Goddess#readme"
+}
