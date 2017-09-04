@@ -4,7 +4,7 @@
   "description": "http://jsfiddle.net/leonardolatorre/beJwJ/",
   "main": "app.js",
   "dependencies": {
-    "node-craigslist": "https://github.com/jc214809/node-craigslist/tarball/master"
+    "node-craigslist": "jc214809/node-craigslist"
   },
   "devDependencies": {},
   "scripts": {
