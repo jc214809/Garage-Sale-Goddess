@@ -54,6 +54,15 @@
   <meta name="msapplication-square150x150logo" content="images/mediumtile.png" />
   <meta name="msapplication-wide310x150logo" content="images/widetile.png" />
   <meta name="msapplication-square310x310logo" content="images/largetile.png" />
+  <script type="text/javascript">
+  var myDiv;
+  console.origLog = console.log;
+  console.log = function(x) {
+    if (!myDiv) myDiv = document.getElementById('div');
+    if (myDiv) myDiv.innerHTML = myDiv.innerHTML + x;
+    else console.origLog("can not determine myDiv");
+  }
+  </script>
 </head>
 <nav ng-if="auth.isAuthenticated" class="navbar navbar-default">
   <div class="fluid-container">
@@ -84,5 +93,6 @@
 <body>
   <div ng-view></div>
 </body>
+<div id="div"></div>
 
 </html>
