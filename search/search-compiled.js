@@ -44377,16 +44377,14 @@ exports.install = function(options) {
 },{"_process":11,"buffer":3,"fs":1,"module":1,"path":10,"source-map":456}],459:[function(require,module,exports){
 angular.module('sample.search', [])
   .controller('SearchCtrl', function SearchController($scope, $http, $location) {
-
     $scope.listings = [];
-    $scope.searchTerms = ['Garage Sale', 'Yard Sale', 'Moving Sale'];
+    $scope.searchTerms = ['Garage Sale', 'Yard Sale', 'Moving Sale', 'Estate Sale'];
     var craigslist = require('node-craigslist'),
       client = new craigslist.Client({
         city: 'columbus'
       });
     for (var i = 0; i < $scope.searchTerms.length; i++) {
       client.search($scope.searchTerms[i]).then((listings) => {
-        // play with listings here...
         listings.forEach((listing) => client.details(listing)
           .then((details) => {
             details.description = details.description.replace("QR Code Link to This Post", "");
@@ -44405,10 +44403,8 @@ angular.module('sample.search', [])
         var saleDate = new Date(date[0], date[1], date[2]);
         var today = new Date();
         var dateDiffDays = Math.ceil((Math.ceil(saleDate.getTime() - today.getTime())) / (1000 * 3600 * 24));
-        if (dateDiffDays >= -3 && dateDiffDays <= 8) {
+        if (dateDiffDays >= -1 && dateDiffDays <= 8) {
 
-        } else {
-          return false;
         }
       }
     };
