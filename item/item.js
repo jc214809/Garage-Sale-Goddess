@@ -27,6 +27,7 @@ angular.module('sample.item', [])
     $scope.submitForm = function(id) {
       console.log($scope.item);
       // Posting data to php file
+      //Not needed I assume //$scope.item.itemDescription = $scope.item.itemDescription.replace(/\n\r?/g, '<br />');
       $http({
         method: 'POST',
         url: $scope.url + $scope.path,
