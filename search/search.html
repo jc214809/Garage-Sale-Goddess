@@ -1,35 +1,28 @@
 <div class="container">
   <h1>Listings</h1>
-  <!-- <p>{{listings}}</p> -->
+  <form id="add-item" class="form-horizontal" ng-submit="updateSearch()">
+    <fieldset class="form-group">
+      <label for="zipcode">Zip code:</label>
+      <input type="text" ng-model="zipcode" name="zipcode" style="width: 50px; text-align: center;">
+      <label for="miles">Distance:</label>
+      <select name="miles" ng-model="miles">
+        <option value="5">5 Miles</option>
+        <option value="10">10 Miles</option>
+        <option value="15">15 Miles</option>
+        <option value="20">20 Miles</option>
+        <option value="25">25 Miles</option>
+        <option value="30">30 Miles</option>
+        <option value="50">50 Miles</option>
+      </select>
+      <button type="submit" id="submit">Update Search</button>
+    </fieldset>
+  </form>
   <div>
+    <hr>
     <div ng-repeat="listing in listings">
-      <a target="_blank" href="{{listing.mapUrl}}">{{listing.title}}  </a><span class="badge badge-pill badge-primary" ng-repeat="date in listing.dates"> {{date | capitalize}}  </span>
+      <a target="_blank" href="{{listing.link}}">{{listing.title}}  </a><span class="badge badge-pill badge-primary" ng-repeat="date in listing.dates" ng-bind="date"></span>&nbsp;
       <p>{{listing.description}}</p>
-      <!-- <p>
-  <div id="myCarousel" class="carousel slide" data-ride="carousel" ng-if="listing.images.length > 0">
-    <ol class="carousel-indicators" ng-repeat="image in listing.images">
-      <li data-target="#myCarousel" data-slide-to="$index" ng-class="{'active': $index == 0}"></li>
-    </ol>
-    <div class="carousel-inner" role="listbox" ng-repeat="image in listing.images">
-      <div class="item center" ng-class="{'active': $index == 0}">
-        <img src="{{image}}" title="$index" alt="missing" />
-      </div>
-    </div>
-    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-        	<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        	<span class="sr-only">Previous</span>
-    	  </a>
-    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-        	<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        	<span class="sr-only">Next</span>
-    	  </a>
-  </div>
-</p> -->
+      <hr>
     </div>
   </div>
 </div>
-<script type="text/javascript ">
-$('.carousel').carousel({
-  interval: 2000
-})
-</script>
