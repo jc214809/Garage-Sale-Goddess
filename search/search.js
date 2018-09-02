@@ -16,7 +16,7 @@
 
         $scope.getIndex = function(listings) {
           for (var i = 0; i < $scope.listings.length; i++) {
-            if ($scope.listings[i].title == listings.title && $scope.listings[i].pubDate == listings.pubDate) {
+            if ($scope.listings[i].guid == listings.guid && $scope.listings[i].pubDate == listings.pubDate) {
               return i;
             }
           }
@@ -31,7 +31,7 @@
             data: {
               rss_url: 'https://columbus.craigslist.org/search/gms?format=rss&postal=' + $scope.zipcode + '&query=garage%20sale&sale_date=' + date + '&search_distance=' + $scope.miles,
               api_key: 'kyetlmarpkb6xpukpnsnglefro8ct4xi8gbcv4qp', // put your api key here
-              count: 50
+              count: 75
             }
           }).done(function(response) {
             for (var i in response.items) {
@@ -39,14 +39,14 @@
                 $scope.listings[$scope.getIndex(response.items[i])].dates.push(date);
               } else {
                 response.items[i].dates = [];
-                response.items[i].dates.push(date)
+                response.items[i].dates.push(date);
                 if (response.items[i].hasOwnProperty('title')) {
+                  $scope.scrubTitle(response.items[i])
                   $scope.listings.push(response.items[i]);
                 }
               }
-              $scope.$apply()
+              $scope.$apply();
             }
-            //console.dir($scope.listings);
           })
         };
         $scope.updateSearch = function() {
@@ -54,6 +54,14 @@
           for (var i = $scope.dates.length - 1; i >= 0; i--) {
             $scope.getFeed($scope.dates[i]);
           }
+        }
+
+        $scope.scrubTitle = function(item) {
+          var fakeprice = item.title.match(/\-?\d+.?\d+?$/);
+          if (fakeprice != null) {
+            item.title = item.title.replace(fakeprice, "");
+          }
+          item.title = item.title.replace("&amp;#x", "").trim();
         }
 
         for (var i = $scope.dates.length - 1; i >= 0; i--) {

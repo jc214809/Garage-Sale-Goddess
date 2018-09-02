@@ -1,21 +1,21 @@
 <div class="container">
-  <div ng-repeat="todo in todos" class="item-row" ng-click="toggle(todo.itemId)">
-    <i id="detailsToggle-{{todo.itemId}}" class="glyphicon glyphicon-triangle-bottom details"></i>
-    <span class="item">{{todo.itemTitle}}</span>
-    <div id="details-{{todo.itemId}}" style="display:none;">
+  <div ng-repeat="find in finds" class="item-row" ng-click="toggle(find.itemId)">
+    <i id="detailsToggle-{{find.itemId}}" class="glyphicon glyphicon-triangle-bottom details"></i>
+    <span class="item">{{find.itemTitle}}</span>
+    <div id="details-{{find.itemId}}" style="display:none;">
       <h4>Details</h4>
       <div><b class="labels">Requester:</b></div>
-      <div><img class="img-circle" alt="Profile Picture" width='10%' src="http://graph.facebook.com/{{todo.itemRequesterID}}/picture?type=normal"><b style="font-size:18px;">{{todo.itemRequesterName}}</b></div>
+      <div><img class="img-circle" alt="Profile Picture" width='10%' src="http://graph.facebook.com/{{find.itemRequesterID}}/picture?type=normal"><b style="font-size:18px;">{{find.itemRequesterName}}</b></div>
       <div><b class="labels">Found by:</b></div>
-      <div><img class="img-circle" alt="Profile Picture" width='10%' src="http://graph.facebook.com/{{todo.itemFinderID}}/picture?type=normal"><b style="font-size:18px;">{{todo.itemFindersName}}</b></div>
-      <div><b class="labels">Price:</b> {{todo.itemPriceRange}}</div>
+      <div><img class="img-circle" alt="Profile Picture" width='10%' src="http://graph.facebook.com/{{find.itemFinderID}}/picture?type=normal"><b style="font-size:18px;">{{find.itemFindersName}}</b></div>
+      <div><b class="labels">Price:</b> {{find.itemPriceRange}}</div>
       <div><b class="labels">Description:</b> </div>
-      <div>{{todo.itemDescription}}</div>
+      <div>{{find.itemDescription}}</div>
       <div>
-        <button class="btn btn-danger add-item" ng-click="addBackToNotFound(todo.itemId, $index)">Mark As Not Found</button>
+        <button class="btn btn-danger add-item" ng-click="addBackToNotFound(find.itemId, $index)">Mark As Not Found</button>
       </div>
     </div>
   </div>
-  <h3>Total todos: {{ getTotalTodos() }}</h3>
+  <h3>Total Finds: {{ getTotalTodos() }}</h3>
   <button class="btn btn-primary add-item" ng-click="cancel()">Back</button>
 </div>

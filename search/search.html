@@ -1,6 +1,6 @@
 <div class="container">
   <h1>Listings</h1>
-  <form id="add-item" class="form-horizontal" ng-submit="updateSearch()">
+  <form id="add-item" class="form-horizontal hidden" ng-submit="updateSearch()">
     <fieldset class="form-group">
       <label for="zipcode">Zip code:</label>
       <input type="text" ng-model="zipcode" name="zipcode" style="width: 60px; text-align: center;">
@@ -20,7 +20,7 @@
   <div>
     <hr>
     <div ng-repeat="listing in listings">
-      <a target="_blank" href="{{listing.link}}">{{listing.title}}  </a><span class="badge badge-pill badge-primary" ng-repeat="date in listing.dates" ng-bind="date"></span>&nbsp;
+      <a target="_blank" href="{{listing.link}}">{{listing.title}}</a>&nbsp;<span class="badge badge-pill badge-primary purple" ng-repeat="date in listing.dates" ng-bind="date"></span>
       <p>{{listing.description}}</p>
       <hr>
     </div>
