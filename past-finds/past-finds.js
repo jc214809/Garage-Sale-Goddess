@@ -7,7 +7,7 @@ angular.module('sample.pastFinds', [])
         alert("error");
       })
 
-    $scope.getTotalTodos = function() {
+    $scope.getTotalFinds = function() {
       return $scope.finds.length;
     };
 
