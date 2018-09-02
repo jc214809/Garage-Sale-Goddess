@@ -8,7 +8,7 @@
 
         $scope.doesListingExists = function(listings) {
           for (var i = 0; i < $scope.listings.length; i++) {
-            if ($scope.listings[i].guid == listings.guid && $scope.listings[i].pubDate == listings.pubDate) {
+            if ($scope.listings[i].link == listings.link && $scope.listings[i].issued == listings.issued) {
               return true;
             }
           }
@@ -17,7 +17,7 @@
 
         $scope.getIndex = function(listings) {
           for (var i = 0; i < $scope.listings.length; i++) {
-            if ($scope.listings[i].guid == listings.guid && $scope.listings[i].pubDate == listings.pubDate) {
+            if ($scope.listings[i].link == listings.link && $scope.listings[i].issued == listings.issued) {
               return i;
             }
           }
@@ -25,30 +25,22 @@
         }
 
         $scope.getFeed = function(date) {
-          $.ajax({
-            url: 'https://api.rss2json.com/v1/api.json',
-            method: 'GET',
-            dataType: 'json',
-            data: {
-              rss_url: 'https://columbus.craigslist.org/search/gms?format=rss&postal=' + $scope.zipcode + '&query=garage%20sale&sale_date=' + date + '&search_distance=' + $scope.miles,
-              api_key: 'kyetlmarpkb6xpukpnsnglefro8ct4xi8gbcv4qp', // put your api key here
-              count: 75
-            }
-          }).done(function(response) {
-            for (var i in response.items) {
-              if ($scope.doesListingExists(response.items[i])) {
-                $scope.listings[$scope.getIndex(response.items[i])].dates.push(date);
-              } else {
-                response.items[i].dates = [];
-                response.items[i].dates.push(date);
-                if (response.items[i].hasOwnProperty('title')) {
-                  $scope.scrubTitle(response.items[i])
-                  $scope.listings.push(response.items[i]);
+          $http.get("https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20xml%20where%20url%20%3D%20'https%3A%2F%2Fcolumbus.craigslist.org%2Fsearch%2Fgms%3Fformat%3Drss%26postal%3D" + $scope.zipcode + "%26query%3Dgarage%2520sale%26sale_date%3D" + date + "%26search_distance%3D" + $scope.miles + "'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys")
+            .success(function(response, status) {
+              var listings = response.query.results.RDF.item;
+              for (var i in response.query.results.RDF.item) {
+                if ($scope.doesListingExists(listings[i])) {
+                  $scope.listings[$scope.getIndex(listings[i])].saleDates.push(date);
+                } else {
+                  listings[i].saleDates = [];
+                  listings[i].saleDates.push(date);
+                  if (listings[i].hasOwnProperty('title')) {
+                    $scope.scrubTitle(listings[i])
+                    $scope.listings.push(listings[i]);
+                  }
                 }
               }
-              $scope.$apply();
-            }
-          })
+            });
         };
         $scope.updateSearch = function() {
           $scope.listings = [];
@@ -59,7 +51,7 @@
 
         $scope.getGarageSaleDates = function() {
           var date = new Date();
-          date.setDate(date.getDate() + 1);
+          //date.setDate(date.getDate() + 2);
           if ([5, 6, 0].indexOf(date.getDay()) > -1) {
             if (date.getDay() == 5) {
               $scope.dates.push(formatDate(date));
@@ -86,15 +78,14 @@
               $scope.dates.push(arrayDate);
             }
           }
-          console.log($scope.dates);
         }
 
         $scope.scrubTitle = function(item) {
-          var fakeprice = item.title.match(/\-?\d+.?\d+?$/);
+          var fakeprice = item.title[0].match(/\-?\d+.?\d+?$/);
           if (fakeprice != null) {
-            item.title = item.title.replace(fakeprice, "");
+            item.title[0] = item.title[0].replace(fakeprice, "");
           }
-          item.title = item.title.replace("&amp;#x", "").trim();
+          item.title[0] = item.title[0].replace("&#x", "").trim();
         }
 
         function formatDate(date) {

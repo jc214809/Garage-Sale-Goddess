@@ -20,7 +20,7 @@
   <div>
     <hr>
     <div ng-repeat="listing in listings">
-      <a target="_blank" href="{{listing.link}}">{{listing.title}}</a>&nbsp;<span class="badge badge-pill badge-primary purple" ng-repeat="date in listing.dates" ng-bind="date"></span>
+      <a target="_blank" href="{{listing.link}}">{{listing.title[0]}}</a>&nbsp;<span class="badge badge-pill badge-primary purple" ng-repeat="date in listing.saleDates track by $index" ng-bind="date"></span>
       <p>{{listing.description}}</p>
       <hr>
     </div>
