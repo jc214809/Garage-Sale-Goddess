@@ -7,6 +7,8 @@
         $scope.keywords = ["Garage Sale", "Yard Sale", "Community Sale", "Community Garage Sale", "Moving Sale", "Barn Sale"];
         $scope.secondaryKeywords = ["Tag Sale", "Estate Sale", "Rummage Sale"];
         var FRIDAY = 5;
+        var SATURDAY = 6;
+        var SUNDAY = 0;
 
         $scope.doesListingExists = function(listings) {
           for (var i = 0; i < $scope.listings.length; i++) {
@@ -59,8 +61,8 @@
         $scope.getGarageSaleDates = function() {
           var date = new Date();
           //date.setDate(date.getDate() + 2);
-          if ([5, 6, 0].indexOf(date.getDay()) > -1) {
-            if (date.getDay() == 5) {
+          if ([FRIDAY, SATURDAY, SUNDAY].indexOf(date.getDay()) > -1) {
+            if (date.getDay() == FRIDAY) {
               $scope.dates.push(formatDate(date));
               for (var i = 0; i < 2; i++) {
                 date.setDate(date.getDate() + 1);
@@ -68,12 +70,12 @@
                 $scope.dates.push(arrayDate);
               }
             }
-            if (date.getDay() == 6) {
+            if (date.getDay() == SATURDAY) {
               $scope.dates.push(formatDate(date));
               date.setDate(date.getDate() + 1);
               $scope.dates.push(formatDate(date));
             }
-            if (date.getDay() == 0) {
+            if (date.getDay() == SUNDAY) {
               $scope.dates.push(formatDate(date));
             }
           } else {
