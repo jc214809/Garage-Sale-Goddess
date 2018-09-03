@@ -28,6 +28,14 @@
           return null;
         }
 
+        $scope.toggleKeywordSearch = function(checked, word) {
+          if (checked == false) {
+            $scope.secondaryKeywords.push($scope.keywords.splice($scope.keywords.indexOf(word), 1));
+          } else {
+            $scope.keywords.push($scope.secondaryKeywords.splice($scope.secondaryKeywords.indexOf(word), 1));
+          }
+        };
+
         $scope.getFeed = function(date) {
           for (var k = 0; k < $scope.keywords.length; k++) {
             $http.get("https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20xml%20where%20url%20%3D%20'https%3A%2F%2Fcolumbus.craigslist.org%2Fsearch%2Fgms%3Fformat%3Drss%26postal%3D" + $scope.zipcode + "%26query%3D" + $scope.keywords[k].replace(/ /g, "%2520") + "%26sale_date%3D" + date + "%26search_distance%3D" + $scope.miles + "'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys")
@@ -36,7 +44,7 @@
                 for (var i in response.query.results.RDF.item) {
                   if ($scope.doesListingExists(listings[i])) {
                     var index = $scope.getIndex(listings[i]);
-                    if (!$scope.listings[index].saleDates.contains(date)) {
+                    if (!$scope.listings[index].saleDates.includes(date)) {
                       $scope.listings[index].saleDates.push(date);
                     }
                   } else {
@@ -95,6 +103,14 @@
             item.title[0] = item.title[0].replace(fakeprice, "");
           }
           item.title[0] = item.title[0].replace("&#x", "").trim();
+        }
+
+        $scope.getCurrentUserLocation = function() {
+          window.navigator.geolocation.getCurrentPosition(function(pos) {
+            $http.get('http://maps.googleapis.com/maps/api/geocode/json?latlng=' + pos.coords.latitude + ',' + pos.coords.longitude + '&sensor=true').then(function(res) {
+              $scope.zipcode = parseInt(res.data.results[0].address_components[8].short_name);
+            })
+          });
         }
 
         function formatDate(date) {

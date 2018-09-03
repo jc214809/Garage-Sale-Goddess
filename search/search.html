@@ -3,7 +3,7 @@
   <form id="add-item" class="form-horizontal" ng-submit="updateSearch()">
     <fieldset class="form-group">
       <label for="zipcode">Zip code:</label>
-      <input type="text" ng-model="zipcode" name="zipcode" style="width: 60px; text-align: center;">
+      <input type="number" ng-model="zipcode" maxlength="5" minlength="5" name="zipcode" style="width: 60px; text-align: center;">
       <label for="miles">Distance:</label>
       <select name="miles" ng-model="miles">
         <option value="5">5 Miles</option>
@@ -14,7 +14,12 @@
         <option value="30">30 Miles</option>
         <option value="50">50 Miles</option>
       </select>
+      <div>
+        <span ng-repeat="word in keywords"> <input type="checkbox" name="keywords" ng-value="word" ng-click="toggleKeywordSearch($event.target.checked, $event.target.value)" checked>{{word}}</span>
+        <span ng-repeat="word in secondaryKeywords"> <input type="checkbox" name="keywords" ng-click="toggleKeywordSearch($event.target.checked, $event.target.value)" ng-value="word">{{word}}</span>
+      </div>
       <button type="submit" id="submit">Update Search</button>
+      <button type="button" id="getCurrentUserLocation" ng-click="getCurrentUserLocation()"><i class="fa fa-location-arrow" style="font-size:18px;color:purple;"></i></button>
     </fieldset>
   </form>
   <div>
