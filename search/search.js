@@ -112,8 +112,13 @@
             $http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + pos.coords.latitude + ',' + pos.coords.longitude + '&sensor=true&key=AIzaSyCkk2guPfwd0SPhb93GJ-nUmb5Xy-Hgq3Q').then(function(res) {
               console.dir(res);
               if (res.status == 200) {
-                $scope.zipcode = parseInt(res.data.results[0].address_components[8].short_name);
-                console.log($scope.zipcode);
+                for (var i = res.data.results[0].address_components.length - 1; i >= 0; i--) {
+                  if (res.data.results[0].address_components[i].types[0] == "postal_code") {
+                    $scope.zipcode = parseInt(res.data.results[0].address_components[i].short_name);
+                    console.log($scope.zipcode);
+                    break;
+                  }
+                }
               } else {
                 console.log("ERROR getting Zip Code");
               }
