@@ -110,9 +110,13 @@
           console.log("Starting Here")
           window.navigator.geolocation.getCurrentPosition(function(pos) {
             $http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + pos.coords.latitude + ',' + pos.coords.longitude + '&sensor=true&key=AIzaSyCkk2guPfwd0SPhb93GJ-nUmb5Xy-Hgq3Q').then(function(res) {
-              $scope.zipcode = parseInt(res.data.results[0].address_components[8].short_name);
-              console.log($scope.zipcode);
               console.dir(res);
+              if (res.status == 200) {
+                $scope.zipcode = parseInt(res.data.results[0].address_components[8].short_name);
+                console.log($scope.zipcode);
+              } else {
+                console.log("ERROR getting Zip Code");
+              }
             })
           });
         }
