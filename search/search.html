@@ -15,8 +15,54 @@
         <option value="50">50 Miles</option>
       </select>
       <div>
-        <span ng-repeat="word in keywords"> <input type="checkbox" name="keywords" ng-value="word" ng-click="toggleKeywordSearch($event.target.checked, $event.target.value)" checked>{{word}}</span>
-        <span ng-repeat="word in secondaryKeywords"> <input type="checkbox" name="keywords" ng-click="toggleKeywordSearch($event.target.checked, $event.target.value)" ng-value="word">{{word}}</span>
+        <div class="make-center">
+          <div>
+            <input type="checkbox" name="keywords" ng-click="toggleKeywordSearch()" id="garage-sale" checked>
+            <label for="garage-sale">Garage Sale</label>
+          </div>
+          &nbsp;
+          <div>
+            <input type="checkbox" name="keywords" ng-click="toggleKeywordSearch()" id="yard-sale" checked>
+            <label for="yard-sale">Yard Sale</label>
+          </div>
+          &nbsp;
+          <div>
+            <input type="checkbox" name="keywords" ng-click="toggleKeywordSearch()" id="community-sale" checked>
+            <label for="community-sale">Community Sale</label>
+          </div>
+        </div>
+        <div class="make-center">
+          <div>
+            <input type="checkbox" name="keywords" ng-click="toggleKeywordSearch()" id="community-garage-sale" checked>
+            <label for="community-garage-sale">Community Garage Sale</label>
+          </div>
+          &nbsp;
+          <div>
+            <input type="checkbox" name="keywords" ng-click="toggleKeywordSearch()" id="moving-sale" checked>
+            <label for="moving-sale">Moving Sale</label>
+          </div>
+          &nbsp;
+          <div>
+            <input type="checkbox" name="keywords" ng-click="toggleKeywordSearch()" id="barn-sale" checked>
+            <label for="barn-sale">Barn Sale</label>
+          </div>
+        </div>
+        <div class="make-center">
+          <div>
+            <input type="checkbox" name="keywords" ng-click="toggleKeywordSearch()" id="tag-sale">
+            <label for="tag-sale">Tag Sale</label>
+          </div>
+          &nbsp;
+          <div>
+            <input type="checkbox" name="keywords" ng-click="toggleKeywordSearch()" id="estate-sale">
+            <label for="estate-sale">Estate Sale</label>
+          </div>
+          &nbsp;
+          <div>
+            <input type="checkbox" name="keywords" ng-click="toggleKeywordSearch()" id="rummage-sale">
+            <label for="rummage-sale">Rummage Sale</label>
+          </div>
+        </div>
       </div>
       <button type="submit" id="submit">Update Search</button>
       <button type="button" id="getCurrentUserLocation" ng-click="getCurrentUserLocation()"><i class="fa fa-location-arrow" style="font-size:18px;color:purple;"></i></button>
