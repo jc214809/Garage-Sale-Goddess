@@ -120,6 +120,9 @@
             })
           });
         }
+        $scope.clear = function() {
+          $scope.listings = [];
+        }
 
         function formatDate(date) {
           var d = new Date(date),
