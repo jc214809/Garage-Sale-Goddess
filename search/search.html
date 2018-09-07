@@ -14,7 +14,7 @@
         <option value="30">30 Miles</option>
         <option value="50">50 Miles</option>
       </select>
-      <div>
+      <div class="hidden">
         <div class="make-center">
           <div>
             <input type="checkbox" name="keywords" ng-click="toggleKeywordSearch()" id="garage-sale" checked>
@@ -65,12 +65,9 @@
         </div>
       </div>
       <button type="submit" id="submit">Update Search</button>
-      <button type="button" id="getCurrentUserLocation" ng-click="getCurrentUserLocation()"><i class="fa fa-location-arrow" style="font-size:18px;color:purple;"></i></button>
+      <button type="button" id="getCurrentUserLocation" ng-click="getCurrentUserLocation()" class="hidden"><i class="fa fa-location-arrow" style="font-size:18px;color:purple;"></i></button>
     </fieldset>
   </form>
-<!-- <form id="get-location" class="form-horizontal" ng-submit="getCurrentUserLocation()">
-  <button type="submit" id="submit">Update Zip</button>
-</form> -->
   <div>
     <hr>
     <div ng-repeat="listing in listings">
