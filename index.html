@@ -57,12 +57,14 @@
   <meta name="msapplication-wide310x150logo" content="images/widetile.png" />
   <meta name="msapplication-square310x310logo" content="images/largetile.png" />
   <script type="text/javascript">
-  var myDiv;
-  console.origLog = console.log;
-  console.log = function(x) {
-    if (!myDiv) myDiv = document.getElementById('div');
-    if (myDiv) myDiv.innerHTML = myDiv.innerHTML + x;
-    else console.origLog("can not determine myDiv");
+  if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+    var myDiv;
+    console.origLog = console.log;
+    console.log = function(x) {
+      if (!myDiv) myDiv = document.getElementById('div');
+      if (myDiv) myDiv.innerHTML = myDiv.innerHTML + x;
+      else console.origLog("can not determine myDiv");
+    }
   }
   </script>
 </head>
