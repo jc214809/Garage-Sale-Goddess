@@ -1,3 +1,19 @@
-.login-btn{
+.login-btn {
     vertical-align: middle;
+}
+
+.logo {
+    width: 650px;
+}
+
+@media (min-width:480px) and (orientation:landscape) {
+    .logo {
+        width: 50%;
+    }
+}
+
+@media (max-width:500px) and (orientation:portrait) {
+    .logo {
+        width: 100%;
+    }
 }
