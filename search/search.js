@@ -50,15 +50,18 @@
                     if ($scope.doesListingExists(listings[i])) {
                       var index = $scope.getIndex(listings[i]);
                       if (!$scope.listings[index].saleDates.includes(date)) {
-                        $scope.listings[index].saleDates.push(date);
+                        $scope.$apply(function() {
+                          $scope.listings[index].saleDates.push(date);
+                        });
                       }
                     } else {
                       listings[i].saleDates = [];
                       listings[i].saleDates.push(date);
                       if (listings[i].hasOwnProperty('title')) {
                         console.dir(listings[i]);
-                        $scope.listings.push(listings[i]);
-                        $scope.$apply();
+                        $scope.$apply(function() {
+                          $scope.listings.push(listings[i]);
+                        });
                       }
                     }
                   }
@@ -129,6 +132,14 @@
             })
           });
         }
+        $scope.getZipCode = function() {
+          $.getJSON('https://ipinfo.io?token=b2230bc6924ef2', function(response) {
+            $scope.$apply(function() {
+              $scope.zipcode = parseInt(response.postal);
+            });
+          });
+        }
+
         $scope.clear = function() {
           $scope.listings = [];
         }
