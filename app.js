@@ -112,7 +112,7 @@ angular.module('sample', [
   return function(input) {
     return (!!input) ? input.charAt(0).toUpperCase() + input.substr(1).toLowerCase() : '';
   }
-}).controller('AppCtrl', function AppCtrl($scope, $location, auth, store) {
+}).controller('AppCtrl', function AppCtrl($scope, $location, auth, store, itemservice) {
 
   $scope.auth = auth;
   $scope.profile = store.get('profile');
@@ -134,7 +134,15 @@ angular.module('sample', [
   };
 
   $scope.cancel = function() {
+    service.item = {};
+    $scope.itemservice = {};
     $location.path('/');
+  };
+
+  $scope.addItem = function() {
+    itemservice.item = {};
+    $scope.itemservice = {};
+    $location.path('/item/add');
   };
 
   $scope.logout = function() {

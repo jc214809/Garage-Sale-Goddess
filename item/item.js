@@ -34,6 +34,7 @@ angular.module('sample.item', [])
         data: $scope.item //forms user object
       }).success(function(data) {
         alert($scope.successMessage);
+        itemservice.item.itemId = null;
         $location.path('/');
       });
     };

@@ -1,10 +1,11 @@
 angular.module('sample.home', [])
   .controller('HomeCtrl', function HomeController($scope, $http, $location, itemservice) {
-    $scope.todos = [];
+    $scope.items = [];
     $scope.users = [];
+    $scope.item = {};
     $http.get($scope.url + "/getNotFoundItems")
       .success(function(data, status, headers, config) {
-        $scope.todos = data;
+        $scope.items = data;
       }).error(function(data, status, headers, config) {
         alert("error");
       })
@@ -24,8 +25,13 @@ angular.module('sample.home', [])
       $location.path('/past');
     };
 
-    $scope.getTotalTodos = function() {
-      return $scope.todos.length;
+    $scope.getTotalItems = function() {
+      if ($scope.items != null) {
+      return $scope.items.length;
+    }else
+  {
+    return 0;
+  }
     };
 
     $scope.markAsFound = function(id, index) {
@@ -37,7 +43,7 @@ angular.module('sample.home', [])
         itemFinderImageURL: $scope.auth.profile.picture
       }
       $http.post($scope.url + "/markItemAsFound", $scope.item).success(function(data, status) {
-        $scope.todos[index].itemStatus = "FOUND";
+        $scope.items[index].itemStatus = "FOUND";
       })
 
     };
@@ -46,12 +52,7 @@ angular.module('sample.home', [])
         itemId: id
       }
       $http.post($scope.url + "/deleteItem", $scope.item).success(function(data, status) {
-        $scope.todos.remove(index);
+        $scope.items.remove(index);
       })
     }
-    $scope.addTodo = function() {
-      $scope.itemservice = itemservice;
-      $scope.itemservice.item = {};
-      $location.path('/item');
-    };
   });
