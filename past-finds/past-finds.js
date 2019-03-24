@@ -1,5 +1,6 @@
 angular.module('sample.pastFinds', [])
   .controller('PastFindsCtrl', function($scope, $http, $location) {
+    $scope.finds = {};
     $http.get($scope.url + "/getFoundItems")
       .success(function(data, status, headers, config) {
         $scope.finds = data;
@@ -8,7 +9,11 @@ angular.module('sample.pastFinds', [])
       })
 
     $scope.getTotalFinds = function() {
-      return $scope.finds.length;
+      if ($scope.finds != null) {
+        return $scope.finds.length;
+      } else {
+        return 0;
+      }
     };
 
     $scope.addBackToNotFound = function(id, index) {

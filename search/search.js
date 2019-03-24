@@ -1,7 +1,7 @@
     angular.module('sample.search', [])
       .controller('SearchCtrl', function SearchController($scope, $http, $location) {
         $scope.zipcode = 43230;
-        $scope.miles = "20";
+        $scope.miles = "15";
         $scope.dates = [];
         $scope.listings = [];
         $scope.keywords = ["Garage Sale", "Yard Sale", "Community Sale", "Community Garage Sale", "Moving Sale", "Barn Sale"];
@@ -104,14 +104,6 @@
               $scope.dates.push(arrayDate);
             }
           }
-        }
-
-        $scope.scrubTitle = function(item) {
-          var fakeprice = item.title[0].match(/\-?\d+.?\d+?$/);
-          if (fakeprice != null) {
-            item.title[0] = item.title[0].replace(fakeprice, "");
-          }
-          item.title[0] = item.title[0].replace("&#x", "").trim();
         }
 
         $scope.getCurrentUserLocation = function() {
