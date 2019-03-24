@@ -28,20 +28,21 @@
           return null;
         }
 
-        $scope.toggleKeywordSearch = function(checked, word) {
-          if (checked == false) {
-            $scope.secondaryKeywords.push($scope.keywords.splice($scope.keywords.indexOf(word), 1));
+        $scope.toggleKeywordSearch = function(word) {
+          if ($scope.keywords.indexOf(word) > -1) {
+            var wordToRemove = $scope.keywords.splice($scope.keywords.indexOf(word), 1);
+            $scope.secondaryKeywords.push(wordToRemove[0]);
           } else {
-            $scope.keywords.push($scope.secondaryKeywords.splice($scope.secondaryKeywords.indexOf(word), 1));
+            var wordToRemove = $scope.secondaryKeywords.splice($scope.secondaryKeywords.indexOf(word), 1);
+            $scope.keywords.push(wordToRemove[0]);
           }
         };
 
         $scope.getFeed = function(date) {
           for (var k = 0; k < $scope.keywords.length; k++) {
-            feednami.load("https://columbus.craigslist.org/search/gms?format=rss&postal=" + $scope.zipcode + "&query=" + $scope.keywords[k] + "&sale_date=" + date + "&search_distance=" + $scope.miles,
+            feednami.load("https%3A%2F%2Fcolumbus.craigslist.org%2Fsearch%2Fgms%3Fformat%3Drss%26postal%3D" + $scope.zipcode + "%26query%3D" + $scope.keywords[k] + "%26sale_date%3D" + date + "%26search_distance%3D" + $scope.miles,
               function(result) {
                 var listings = result.feed.entries;
-                console.dir(result.feed.entries);
                 if (result.error) {
                   console.log(result.error);
                 } else {
@@ -58,7 +59,6 @@
                       listings[i].saleDates = [];
                       listings[i].saleDates.push(date);
                       if (listings[i].hasOwnProperty('title')) {
-                        console.dir(listings[i]);
                         $scope.$apply(function() {
                           $scope.listings.push(listings[i]);
                         });
