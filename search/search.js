@@ -135,6 +135,10 @@
         $scope.getZipCode = function() {
           $.getJSON('https://ipinfo.io?token=b2230bc6924ef2', function(response) {
             $scope.$apply(function() {
+              $scope.ipData = response;
+              var loc = response.loc.split(",");
+              var latitude = loc[0];
+              var longitude = loc[1];
               $scope.zipcode = parseInt(response.postal);
             });
           });
