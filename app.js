@@ -142,7 +142,7 @@ angular.module('sample', [
   $scope.addItem = function() {
     itemservice.item = {};
     $scope.itemservice = {};
-    $location.path('/item/add');
+    $location.path('/item/');
   };
 
   $scope.logout = function() {
