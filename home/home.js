@@ -27,11 +27,10 @@ angular.module('sample.home', [])
 
     $scope.getTotalItems = function() {
       if ($scope.items != null) {
-      return $scope.items.length;
-    }else
-  {
-    return 0;
-  }
+        return $scope.items.length;
+      } else {
+        return 0;
+      }
     };
 
     $scope.markAsFound = function(id, index) {
