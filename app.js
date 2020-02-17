@@ -117,7 +117,7 @@ angular.module('sample', [
   $scope.auth = auth;
   $scope.profile = store.get('profile');
   //$scope.url = "http://localhost:8080/Garage-Sale-Goddess-API";
-  $scope.url = "http://75.118.135.179:7079/Garage-Sale-Goddess-API";
+  $scope.url = "http://75.118.135.179:9080/Garage-Sale-Goddess-API";
 
   $scope.toggle = function(id) {
     $("#details-" + id).toggle("slow", $scope.toggleArrows(id));
